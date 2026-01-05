@@ -1,0 +1,7 @@
+MONGO_URI=mongodb://localhost:27017/dachilla
+SESSION_KEY=local_secret
+
+CLIENT_URL=http://localhost:3000
+ADMIN_PANEL_URL=http://localhost:3001
+
+PORT=400
