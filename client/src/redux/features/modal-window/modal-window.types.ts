@@ -1,0 +1,8 @@
+export enum ModalWindowTypes {
+  REGISTER = "REGISTER",
+  LOGIN = "LOGIN",
+  BOOKING = "BOOKING",
+  CAROUSEL = "CAROUSEL",
+  REVIEWS = "REVIEWS",
+  MAKESURE = "MAKESURE",
+}
