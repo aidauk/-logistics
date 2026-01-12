@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: false
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -23,9 +26,11 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
+        working-directory: ./logistics-site
         run: npm ci
 
       - name: Build
+        working-directory: ./logistics-site
         run: npm run build
         env:
           BASE_PATH: ''
@@ -35,5 +40,5 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          publish_dir: ./logistics-site/out
           cname: false
