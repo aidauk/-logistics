@@ -26,31 +26,27 @@ export interface Tariff {
 
 export const cities: City[] = [
   // Китай
-  { id: "beijing", name: "Пекин", country: "Китай" },
-  { id: "shanghai", name: "Шанхай", country: "Китай" },
+  { id: "yiwu", name: "Иу", country: "Китай" },
   { id: "guangzhou", name: "Гуанчжоу", country: "Китай" },
-  { id: "shenzhen", name: "Шэньчжэнь", country: "Китай" },
   // Узбекистан
   { id: "tashkent", name: "Ташкент", country: "Узбекистан" },
-  { id: "samarkand", name: "Самарканд", country: "Узбекистан" },
-  { id: "bukhara", name: "Бухара", country: "Узбекистан" },
 ];
 
 export const tariffs: Record<DeliveryType, Tariff> = {
   auto: {
-    pricePerKg: 2.5, // USD за килограмм
+    pricePerKg: 15, // USD за килограмм (фиксированный тариф)
     deliveryDays: 15, // дней
-    minWeight: 100, // минимальный вес в кг
+    minWeight: 1, // минимальный вес в кг
   },
   air: {
-    pricePerKg: 8.0,
+    pricePerKg: 15, // USD за килограмм (фиксированный тариф)
     deliveryDays: 5,
     minWeight: 1,
   },
   cargo: {
-    pricePerKg: 1.8,
+    pricePerKg: 15, // USD за килограмм (фиксированный тариф)
     deliveryDays: 20,
-    minWeight: 500,
+    minWeight: 1,
   },
 };
 
@@ -83,5 +79,7 @@ export function calculateDelivery(
     currency: "USD",
   };
 }
+
+
 
 

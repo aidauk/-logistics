@@ -154,41 +154,47 @@ ${formData.comment}`;
               </h2>
               <div className="space-y-4">
                 <div>
-                  <h3 className="font-semibold mb-2">Телефон</h3>
-                  <a
-                    href="tel:+998XXXXXXXXX"
-                    className="text-primary hover:underline"
-                  >
-                    +998 XX XXX XX XX
-                  </a>
+                  <h3 className="font-semibold mb-2">В Китае</h3>
+                  <div className="space-y-1">
+                    <a
+                      href="tel:+8619846639095"
+                      className="text-primary hover:underline block"
+                    >
+                      +86 198 466 390 95
+                    </a>
+                    <a
+                      href="tel:+8619550521030"
+                      className="text-primary hover:underline block"
+                    >
+                      +86 195 505 210 30
+                    </a>
+                  </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-2">Email</h3>
-                  <a
-                    href="mailto:info@logistics.uz"
-                    className="text-primary hover:underline"
-                  >
-                    info@logistics.uz
-                  </a>
+                  <h3 className="font-semibold mb-2">В Узбекистане</h3>
+                  <div className="space-y-1">
+                    <a
+                      href="tel:+998772620808"
+                      className="text-primary hover:underline block"
+                    >
+                      +99877 262 08 08
+                    </a>
+                    <a
+                      href="tel:+998772640808"
+                      className="text-primary hover:underline block"
+                    >
+                      +99877 264 08 08
+                    </a>
+                  </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-2">Telegram</h3>
+                  <h3 className="font-semibold mb-2">Почта</h3>
                   <a
-                    href="https://t.me/logistics_uz"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="mailto:jiangqistar@gmail.com"
                     className="text-primary hover:underline"
                   >
-                    @logistics_uz
+                    jiangqistar@gmail.com
                   </a>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-2">Режим работы</h3>
-                  <p className="text-gray-600">
-                    Пн-Пт: 9:00 - 18:00
-                    <br />
-                    Сб-Вс: Выходной
-                  </p>
                 </div>
               </div>
             </div>

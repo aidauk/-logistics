@@ -1,27 +1,39 @@
 "use client";
 
 import Link from "next/link";
+import Map from "@/components/Map";
 
 export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-dark to-primary text-white py-20 md:py-32">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <section className="relative text-white py-20 md:py-32 overflow-hidden">
+        {/* Фоновое изображение */}
+        <div className="absolute inset-0">
+          <img
+            src="/hero-banner.jpg"
+            alt="Логистическая сеть"
+            className="w-full h-full object-cover"
+            style={{ objectFit: "cover" }}
+          />
+          {/* Легкий overlay только для читаемости текста */}
+          <div className="absolute inset-0 bg-black/30"></div>
+        </div>
+        
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
               Грузоперевозки из Китая в Узбекистан
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-200">
+            <p className="text-xl md:text-2xl mb-8 text-gray-100 drop-shadow-md">
               Быстрая и надёжная доставка грузов. Автоперевозки, авиадоставка,
               контейнерные перевозки. Рассчитайте стоимость онлайн за 2 минуты.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/calculator" className="btn-accent text-center">
+              <Link href="/calculator" className="btn-accent text-center shadow-lg">
                 Рассчитать стоимость
               </Link>
-              <Link href="/contacts" className="bg-white text-primary hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition-colors duration-200 text-center">
+              <Link href="/contacts" className="bg-white text-primary hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition-colors duration-200 text-center shadow-lg">
                 Оставить заявку
               </Link>
             </div>
@@ -80,6 +92,21 @@ export default function HomePage() {
                 Полная защита груза на всех этапах перевозки
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Map Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Наши маршруты
+          </h2>
+          <p className="text-center text-gray-600 mb-8">
+            Доставка из Китая в Узбекистан
+          </p>
+          <div className="max-w-6xl mx-auto">
+            <Map />
           </div>
         </div>
       </section>

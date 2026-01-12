@@ -15,7 +15,7 @@ export default function Header() {
             {/* Левая часть - Контакты */}
             <div className="flex flex-wrap items-center gap-4 mb-2 md:mb-0">
               <a
-                href="tel:+998XXXXXXXXX"
+                href="tel:+998772620808"
                 className="flex items-center gap-1 hover:text-white transition-colors"
               >
                 <svg
@@ -31,10 +31,10 @@ export default function Header() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span>+998 XX XXX XX XX</span>
+                <span>+99877 262 08 08</span>
               </a>
               <a
-                href="mailto:info@logistics.uz"
+                href="mailto:jiangqistar@gmail.com"
                 className="flex items-center gap-1 hover:text-white transition-colors"
               >
                 <svg
@@ -50,7 +50,7 @@ export default function Header() {
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <span>info@logistics.uz</span>
+                <span>jiangqistar@gmail.com</span>
               </a>
             </div>
 
@@ -89,7 +89,9 @@ export default function Header() {
                   </svg>
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/patron.zu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
                   aria-label="Instagram"
                 >
