@@ -35,10 +35,19 @@ jobs:
         env:
           BASE_PATH: ''
 
+      - name: Copy CNAME file
+        run: |
+          if [ -f "./logistics-site/public/CNAME" ]; then
+            cp ./logistics-site/public/CNAME ./logistics-site/out/CNAME
+            echo "CNAME file copied to out directory"
+          else
+            echo "CNAME file not found in public directory"
+          fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./logistics-site/out
-          cname: false
+          cname: true
