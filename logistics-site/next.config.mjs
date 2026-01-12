@@ -6,9 +6,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Для работы на GitLab Pages с подпапками
+  // Для работы на GitHub Pages
   basePath: process.env.BASE_PATH || "",
   assetPrefix: process.env.BASE_PATH || "",
+  trailingSlash: true,
 };
 
 export default nextConfig;
