@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: defaultSEO.ogTitle || defaultSEO.title,
     description: defaultSEO.ogDescription || defaultSEO.description,
-    type: defaultSEO.ogType || "website",
+    type: (defaultSEO.ogType as "website" | "article" | undefined) || "website",
   },
 };
 
