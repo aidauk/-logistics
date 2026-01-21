@@ -60,6 +60,12 @@ jobs:
           # Создаем .nojekyll файл для отключения Jekyll обработки
           touch ./out/.nojekyll
           echo ".nojekyll file created in out directory"
+          # Убеждаемся что index.html на месте
+          if [ ! -f "./out/index.html" ]; then
+            echo "ERROR: index.html missing after build!"
+            exit 1
+          fi
+          echo "index.html confirmed in out directory"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
