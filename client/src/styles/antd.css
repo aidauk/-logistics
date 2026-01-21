@@ -1,0 +1,32 @@
+:where(.css-dev-only-do-not-override-mzwlov).ant-select-outlined:not(
+    .ant-select-customize-input
+  )
+  .ant-select-selector {
+  border: none;
+  outline: none;
+  border-radius: 250px;
+  background: #e7fff6;
+  color: #404e5a;
+}
+:where(.css-dev-only-do-not-override-mzwlov).ant-select-single {
+  outline: none;
+  font-size: 12px;
+  height: 27px;
+  font-family: inherit;
+}
+:where(.css-dev-only-do-not-override-mzwlov).ant-select-single:not(
+    .ant-select-customize-input
+  )
+  .ant-select-selector {
+  outline: none;
+  padding: 0 14px;
+}
+.ant-select-focused:where(
+    .css-dev-only-do-not-override-nzwlov
+  ).ant-select-outlined:not(.ant-select-disabled):not(
+    .ant-select-customize-input
+  ):not(.ant-pagination-szie-changer)
+  .ant-select-selector {
+  border: 2px solid red;
+  outline: black;
+}
