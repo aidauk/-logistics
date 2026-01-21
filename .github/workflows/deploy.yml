@@ -67,6 +67,14 @@ jobs:
           fi
           echo "index.html confirmed in out directory"
 
+      - name: List files before deploy
+        run: |
+          echo "Files in out directory:"
+          ls -la ./out/ | head -30
+          echo ""
+          echo "Checking for index.html:"
+          ls -la ./out/index.html || echo "ERROR: index.html not found!"
+          
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
@@ -74,6 +82,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
           cname: true
-          force_orphan: false
+          keep_files: false
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
