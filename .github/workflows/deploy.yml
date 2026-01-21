@@ -39,7 +39,15 @@ jobs:
             echo "Error: Build output directory 'out' not found"
             exit 1
           fi
-          echo "Build successful, output directory exists"
+          if [ ! -f "./out/index.html" ]; then
+            echo "Error: index.html not found in out directory"
+            echo "Files in out directory:"
+            ls -la ./out/
+            exit 1
+          fi
+          echo "Build successful, index.html exists"
+          echo "Files in out directory:"
+          ls -la ./out/ | head -20
 
       - name: Copy CNAME and .nojekyll files
         run: |
