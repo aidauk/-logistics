@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        working-directory: ./logistics-site
+        run: npm ci
+
+      - name: Build
+        working-directory: ./logistics-site
+        run: npm run build
+        env:
+          BASE_PATH: ''
+
+      - name: Copy CNAME file
+        run: |
+          if [ -f "./logistics-site/public/CNAME" ]; then
+            cp ./logistics-site/public/CNAME ./logistics-site/out/CNAME
+            echo "CNAME file copied to out directory"
+          else
+            echo "CNAME file not found in public directory"
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./logistics-site/out
+          cname: true
