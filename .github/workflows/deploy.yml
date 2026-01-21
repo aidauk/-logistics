@@ -41,7 +41,7 @@ jobs:
           fi
           echo "Build successful, output directory exists"
 
-      - name: Copy CNAME file
+      - name: Copy CNAME and .nojekyll files
         run: |
           if [ -f "./public/CNAME" ]; then
             cp ./public/CNAME ./out/CNAME
@@ -49,6 +49,9 @@ jobs:
           else
             echo "CNAME file not found in public directory"
           fi
+          # Создаем .nojekyll файл для отключения Jekyll обработки
+          touch ./out/.nojekyll
+          echo ".nojekyll file created in out directory"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
