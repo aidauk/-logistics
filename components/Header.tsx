@@ -7,7 +7,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-blue-900 sticky top-0 z-50 shadow-lg">
+    <header className="bg-blue-900 sticky top-0 z-[1000] shadow-lg">
       {/* Top Bar - Контакты и соц. сети */}
       <div className="bg-blue-800 border-b border-blue-700">
         <div className="container mx-auto px-4 py-2">
@@ -79,15 +79,6 @@ export default function Header() {
                 <span className="hidden sm:inline">Абдулла Кахара 44, Ташкент</span>
               </div>
               <div className="flex items-center gap-2">
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                  aria-label="Facebook"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                  </svg>
-                </a>
                 <a
                   href="https://www.instagram.com/patron.zu?igsh=cmZ6eTIwa3IxYTdy"
                   target="_blank"

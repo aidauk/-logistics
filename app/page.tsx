@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative text-white py-20 md:py-32 overflow-hidden">
+      <section className="relative text-white pt-12 pb-20 md:pt-16 md:pb-32 overflow-hidden">
         {/* Фоновое изображение с логотипом */}
         <div className="absolute inset-0">
           <img
@@ -20,7 +20,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 pt-8 md:pt-12">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
               Грузоперевозки из Китая в Узбекистан

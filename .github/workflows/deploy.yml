@@ -4,20 +4,24 @@ on:
   push:
     branches:
       - main
+      - master
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: false
-          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -29,59 +33,25 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
         env:
-          BASE_PATH: ''
-          
-      - name: Verify build output
-        run: |
-          if [ ! -d "./out" ]; then
-            echo "Error: Build output directory 'out' not found"
-            exit 1
-          fi
-          if [ ! -f "./out/index.html" ]; then
-            echo "Error: index.html not found in out directory"
-            echo "Files in out directory:"
-            ls -la ./out/
-            exit 1
-          fi
-          echo "Build successful, index.html exists"
-          echo "Files in out directory:"
-          ls -la ./out/ | head -20
+          BASE_PATH: ${{ github.event.repository.name == github.event.repository.owner.login && github.event.repository.name == 'aidauk.github.io' && '' || '/' + github.event.repository.name }}
+        run: npm run build
 
-      - name: Copy CNAME and .nojekyll files
-        run: |
-          if [ -f "./public/CNAME" ]; then
-            cp ./public/CNAME ./out/CNAME
-            echo "CNAME file copied to out directory"
-          else
-            echo "CNAME file not found in public directory"
-          fi
-          # Создаем .nojekyll файл для отключения Jekyll обработки
-          touch ./out/.nojekyll
-          echo ".nojekyll file created in out directory"
-          # Убеждаемся что index.html на месте
-          if [ ! -f "./out/index.html" ]; then
-            echo "ERROR: index.html missing after build!"
-            exit 1
-          fi
-          echo "index.html confirmed in out directory"
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-      - name: List files before deploy
-        run: |
-          echo "Files in out directory:"
-          ls -la ./out/ | head -30
-          echo ""
-          echo "Checking for index.html:"
-          ls -la ./out/index.html || echo "ERROR: index.html not found!"
-          
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
-          cname: true
-          keep_files: false
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          path: ./out
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
