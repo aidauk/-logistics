@@ -22,10 +22,20 @@ export default function HomePage() {
         
         <div className="container mx-auto px-4 relative z-10 pt-8 md:pt-12">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
+            <h1 
+              className="text-4xl md:text-6xl font-bold mb-6 text-white"
+              style={{
+                textShadow: '-2px -2px 0 #1d4ed8, 2px -2px 0 #1d4ed8, -2px 2px 0 #1d4ed8, 2px 2px 0 #1d4ed8, -1px -1px 0 #1d4ed8, 1px -1px 0 #1d4ed8, -1px 1px 0 #1d4ed8, 1px 1px 0 #1d4ed8'
+              }}
+            >
               Грузоперевозки из Китая в Узбекистан
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-100 drop-shadow-md">
+            <p 
+              className="text-xl md:text-2xl mb-8 text-white"
+              style={{
+                textShadow: '-1px -1px 0 #1d4ed8, 1px -1px 0 #1d4ed8, -1px 1px 0 #1d4ed8, 1px 1px 0 #1d4ed8'
+              }}
+            >
               Быстрая и надёжная доставка грузов. Автоперевозки,
               контейнерные перевозки. Рассчитайте стоимость онлайн за 2 минуты.
             </p>
