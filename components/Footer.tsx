@@ -1,23 +1,28 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/components/LanguageProvider";
+import { t } from "@/lib/i18n";
 
 export default function Footer() {
+  const { language } = useLanguage();
   return (
     <footer className="bg-blue-900 text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">Patron.zu</h3>
+            <h3 className="text-xl font-bold mb-4">{t(language, "footer.company")}</h3>
             <p className="text-gray-400 text-sm">
-              Профессиональные грузоперевозки из Китая в Узбекистан
+              {t(language, "footer.description")}
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Навигация</h4>
+            <h4 className="font-semibold mb-4">{t(language, "footer.navigation")}</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
                 <Link href="/" className="hover:text-white transition-colors">
-                  Главная
+                  {t(language, "nav.home")}
                 </Link>
               </li>
               <li>
@@ -25,7 +30,7 @@ export default function Footer() {
                   href="/services"
                   className="hover:text-white transition-colors"
                 >
-                  Услуги
+                  {t(language, "nav.services")}
                 </Link>
               </li>
               <li>
@@ -33,7 +38,7 @@ export default function Footer() {
                   href="/calculator"
                   className="hover:text-white transition-colors"
                 >
-                  Калькулятор
+                  {t(language, "nav.calculator")}
                 </Link>
               </li>
               <li>
@@ -41,26 +46,28 @@ export default function Footer() {
                   href="/contacts"
                   className="hover:text-white transition-colors"
                 >
-                  Контакты
+                  {t(language, "nav.contacts")}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Услуги</h4>
+            <h4 className="font-semibold mb-4">{t(language, "footer.services")}</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>Автоперевозки</li>
-              <li>Контейнерные перевозки</li>
-              <li>Таможенное сопровождение</li>
+              <li>{t(language, "footer.service.auto")}</li>
+              <li>{t(language, "footer.service.container")}</li>
+              <li>{t(language, "footer.service.customs")}</li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Контакты</h4>
+            <h4 className="font-semibold mb-4">{t(language, "footer.contacts")}</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <span className="font-semibold text-gray-300">В Китае:</span>
+                <span className="font-semibold text-gray-300">
+                  {t(language, "footer.in.china")}
+                </span>
                 <ul className="ml-2 mt-1 space-y-1">
                   <li>
                     <a
@@ -81,7 +88,9 @@ export default function Footer() {
                 </ul>
               </li>
               <li>
-                <span className="font-semibold text-gray-300">В Узбекистане:</span>
+                <span className="font-semibold text-gray-300">
+                  {t(language, "footer.in.uzbekistan")}
+                </span>
                 <ul className="ml-2 mt-1 space-y-1">
                   <li>
                     <a
@@ -102,7 +111,9 @@ export default function Footer() {
                 </ul>
               </li>
               <li>
-                <span className="font-semibold text-gray-300">Почта:</span>
+                <span className="font-semibold text-gray-300">
+                  {t(language, "footer.email")}
+                </span>
                 <a
                   href="mailto:PatronZUuz@gmail.com"
                   className="ml-2 hover:text-white transition-colors"
@@ -111,8 +122,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <span className="font-semibold text-gray-300">Адрес:</span>
-                <span className="ml-2">Абдулла Кахара 44, Ташкент</span>
+                <span className="font-semibold text-gray-300">
+                  {t(language, "footer.address")}
+                </span>
+                <span className="ml-2">
+                  {t(language, "contacts.info.address.value")}
+                </span>
               </li>
             </ul>
           </div>
@@ -121,7 +136,8 @@ export default function Footer() {
         <div className="border-t border-blue-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400">
-              &copy; {new Date().getFullYear()} Patron.zu. Все права защищены.
+              &copy; {new Date().getFullYear()} {t(language, "footer.company")}.{" "}
+              {t(language, "footer.rights")}
             </p>
             <div className="flex gap-4">
               <a

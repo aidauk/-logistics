@@ -198,7 +198,7 @@ ${formData.comment}`;
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2">Адрес</h3>
-                  <p className="text-gray-700">Абдулла Кахара 44, Ташкент</p>
+                  <p className="text-gray-700">улица Аския 24, Ташкент</p>
                 </div>
               </div>
             </div>

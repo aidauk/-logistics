@@ -2,9 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useLanguage } from "@/components/LanguageProvider";
+import { t } from "@/lib/i18n";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const { language, setLanguage } = useLanguage();
 
   return (
     <header className="bg-blue-900 sticky top-0 z-[1000] shadow-lg">
@@ -54,7 +58,7 @@ export default function Header() {
               </a>
             </div>
 
-            {/* Правая часть - Адрес и соц. сети */}
+            {/* Правая часть - Адрес, язык и соц. сети */}
             <div className="flex flex-wrap items-center gap-4">
               <div className="flex items-center gap-1 text-gray-400">
                 <svg
@@ -76,7 +80,55 @@ export default function Header() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span className="hidden sm:inline">Абдулла Кахара 44, Ташкент</span>
+                <span className="hidden sm:inline">улица Аския 24, Ташкент</span>
+              </div>
+
+              {/* Переключатель языка */}
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setIsLangOpen((prev) => !prev)}
+                  className="flex items-center gap-1 px-2 py-1 rounded text-xs font-semibold text-gray-200 hover:text-white hover:bg-white/10 transition-colors"
+                >
+                  <span>{language.toUpperCase()}</span>
+                  <svg
+                    className="w-3 h-3 text-gray-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                {isLangOpen && (
+                  <div className="absolute right-0 mt-1 w-24 rounded-md bg-blue-900/95 border border-blue-700 shadow-lg z-[1100]">
+                    {(["ru", "uz", "en"] as const).map((lng) => (
+                      <button
+                        key={lng}
+                        type="button"
+                        onClick={() => {
+                          setLanguage(lng);
+                          setIsLangOpen(false);
+                        }}
+                        className={
+                          "flex w-full items-center justify-between px-2 py-1 text-xs " +
+                          (language === lng
+                            ? "bg-white/10 text-white"
+                            : "text-gray-200 hover:bg-white/10 hover:text-white")
+                        }
+                      >
+                        <span>{lng.toUpperCase()}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
               <div className="flex items-center gap-2">
                 <a
@@ -141,25 +193,25 @@ export default function Header() {
                 href="/"
                 className="text-white hover:text-primary transition-colors font-medium"
               >
-                Главная
+                {t(language, "nav.home")}
               </Link>
               <Link
                 href="/services"
                 className="text-white hover:text-primary transition-colors font-medium"
               >
-                Услуги
+                {t(language, "nav.services")}
               </Link>
               <Link
                 href="/calculator"
                 className="text-white hover:text-primary transition-colors font-medium"
               >
-                Калькулятор
+                {t(language, "nav.calculator")}
               </Link>
               <Link
                 href="/contacts"
                 className="text-white hover:text-primary transition-colors font-medium"
               >
-                Контакты
+                {t(language, "nav.contacts")}
               </Link>
               <Link
                 href="/calculator"
@@ -208,28 +260,28 @@ export default function Header() {
                 className="block py-2 text-white hover:text-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Главная
+                {t(language, "nav.home")}
               </Link>
               <Link
                 href="/services"
                 className="block py-2 text-white hover:text-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Услуги
+                {t(language, "nav.services")}
               </Link>
               <Link
                 href="/calculator"
                 className="block py-2 text-white hover:text-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Калькулятор
+                {t(language, "nav.calculator")}
               </Link>
               <Link
                 href="/contacts"
                 className="block py-2 text-white hover:text-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Контакты
+                {t(language, "nav.contacts")}
               </Link>
               <Link
                 href="/calculator"
