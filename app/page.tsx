@@ -68,8 +68,12 @@ export default function HomePage() {
             {services.map((service) => (
               <div key={service.id} className="card">
                 <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                <h3 className="text-xl font-semibold mb-2">
+                  {t(language, `home.services.${service.id}.title`)}
+                </h3>
+                <p className="text-gray-600">
+                  {t(language, `home.services.${service.id}.description`)}
+                </p>
               </div>
             ))}
           </div>
@@ -90,23 +94,29 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="text-5xl mb-4">🚚</div>
-              <h3 className="text-xl font-semibold mb-2">Быстрая доставка</h3>
+              <h3 className="text-xl font-semibold mb-2">
+                {t(language, "home.why.fast.title")}
+              </h3>
               <p className="text-gray-600">
-                Оптимальные маршруты и сроки доставки
+                {t(language, "home.why.fast.desc")}
               </p>
             </div>
             <div className="text-center">
               <div className="text-5xl mb-4">💰</div>
-              <h3 className="text-xl font-semibold mb-2">Прозрачные цены</h3>
+              <h3 className="text-xl font-semibold mb-2">
+                {t(language, "home.why.price.title")}
+              </h3>
               <p className="text-gray-600">
-                Без скрытых платежей, фиксированная стоимость
+                {t(language, "home.why.price.desc")}
               </p>
             </div>
             <div className="text-center">
               <div className="text-5xl mb-4">🛡️</div>
-              <h3 className="text-xl font-semibold mb-2">Страхование</h3>
+              <h3 className="text-xl font-semibold mb-2">
+                {t(language, "home.why.insurance.title")}
+              </h3>
               <p className="text-gray-600">
-                Полная защита груза на всех этапах перевозки
+                {t(language, "home.why.insurance.desc")}
               </p>
             </div>
           </div>
