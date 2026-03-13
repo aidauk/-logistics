@@ -217,7 +217,7 @@ export default function Header() {
                 href="/calculator"
                 className="bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded transition-colors duration-200"
               >
-                Рассчитать
+                {t(language, "nav.calculate")}
               </Link>
             </div>
 
@@ -288,7 +288,7 @@ export default function Header() {
                 className="block bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded text-center mt-4 transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Рассчитать
+                {t(language, "nav.calculate")}
               </Link>
             </div>
           )}
