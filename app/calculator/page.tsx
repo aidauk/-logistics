@@ -9,7 +9,7 @@ import {
   type ExchangeRates,
 } from "@/lib/exchangeRates";
 
-const PRICE_PER_CUBE = 200; // USD за 1 кубометр (без растаможки)
+const PRICE_PER_CUBE = 95; // USD за 1 кубометр (без растаможки)
 
 export default function CalculatorPage() {
   const [volume, setVolume] = useState<string>(""); // Объем в кубометрах
@@ -105,7 +105,7 @@ export default function CalculatorPage() {
       return;
     }
 
-    // 1 Куб = 200$ Без растаможки
+    // 1 Куб = 95$ Без растаможки
     const totalUsd = volumeNum * PRICE_PER_CUBE;
     const totalUzs = convertCurrency(totalUsd, "UZS", rates);
     const totalCny = convertCurrency(totalUsd, "CNY", rates);
