@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useLanguage } from "@/components/LanguageProvider";
+import { t } from "@/lib/i18n";
 import {
   fetchExchangeRates,
   saveExchangeRates,
@@ -12,6 +14,7 @@ import {
 const PRICE_PER_CUBE = 95; // USD за 1 кубометр (без растаможки)
 
 export default function CalculatorPage() {
+  const { language } = useLanguage();
   const [volume, setVolume] = useState<string>(""); // Объем в кубометрах
   const [result, setResult] = useState<{
     usd: number;
@@ -64,7 +67,7 @@ export default function CalculatorPage() {
     const usdToCny = parseFloat(manualRates.usdToCny);
 
     if (isNaN(usdToUzs) || isNaN(usdToCny) || usdToUzs <= 0 || usdToCny <= 0) {
-      setError("Введите корректные значения курсов");
+      setError(t(language, "calculator.errors.invalidRates"));
       return;
     }
 
@@ -90,18 +93,18 @@ export default function CalculatorPage() {
     setResult(null);
 
     if (!volume) {
-      setError("Введите объем груза");
+      setError(t(language, "calculator.errors.enterVolume"));
       return;
     }
 
     if (!rates) {
-      setError("Курсы валют не загружены");
+      setError(t(language, "calculator.errors.ratesNotLoaded"));
       return;
     }
 
     const volumeNum = parseFloat(volume);
     if (isNaN(volumeNum) || volumeNum <= 0) {
-      setError("Введите корректный объем");
+      setError(t(language, "calculator.errors.invalidVolume"));
       return;
     }
 
@@ -121,30 +124,36 @@ export default function CalculatorPage() {
     <div className="py-16 bg-blue-50">
       <div className="container mx-auto px-4 max-w-4xl">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
-          Калькулятор стоимости доставки
+          {t(language, "calculator.title")}
         </h1>
         <p className="text-center text-gray-600 mb-12">
-          Тариф: {PRICE_PER_CUBE} USD за 1 кубометр (Без растаможки)
+          {t(language, "calculator.tariff", { price: PRICE_PER_CUBE })}
         </p>
 
         <div className="bg-white rounded-lg shadow-lg p-6 md:p-8">
           {/* Курсы валют */}
           <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="font-semibold text-lg">Курсы валют</h3>
+              <h3 className="font-semibold text-lg">
+                {t(language, "calculator.rates.title")}
+              </h3>
               <div className="flex gap-2">
                 <button
                   onClick={loadRates}
                   className="text-sm btn-primary"
                   disabled={loading}
                 >
-                  {loading ? "Загрузка..." : "Обновить"}
+                  {loading
+                    ? t(language, "calculator.rates.loading")
+                    : t(language, "calculator.rates.refresh")}
                 </button>
                 <button
                   onClick={() => setShowManualInput(!showManualInput)}
                   className="text-sm bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
                 >
-                  {showManualInput ? "Отмена" : "Ввести вручную"}
+                  {showManualInput
+                    ? t(language, "calculator.rates.manual.cancel")
+                    : t(language, "calculator.rates.manual.toggle")}
                 </button>
               </div>
             </div>
@@ -153,7 +162,7 @@ export default function CalculatorPage() {
               <div className="space-y-3 mt-4">
                 <div>
                   <label className="block text-sm font-semibold mb-1">
-                    USD → UZS
+                    {t(language, "calculator.rates.manual.usdToUzs")}
                   </label>
                   <input
                     type="number"
@@ -165,12 +174,12 @@ export default function CalculatorPage() {
                       })
                     }
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-                    placeholder="Например: 12500"
+                    placeholder={t(language, "calculator.rates.manual.placeholder.usdToUzs")}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold mb-1">
-                    USD → CNY
+                    {t(language, "calculator.rates.manual.usdToCny")}
                   </label>
                   <input
                     type="number"
@@ -182,33 +191,37 @@ export default function CalculatorPage() {
                       })
                     }
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-                    placeholder="Например: 7.2"
+                    placeholder={t(language, "calculator.rates.manual.placeholder.usdToCny")}
                   />
                 </div>
                 <button
                   onClick={handleSaveManualRates}
                   className="w-full btn-primary"
                 >
-                  Сохранить курсы
+                  {t(language, "calculator.rates.manual.save")}
                 </button>
               </div>
             ) : (
               rates && (
                 <div className="grid grid-cols-2 gap-4 mt-4">
                   <div>
-                    <span className="text-sm text-gray-600">USD → UZS:</span>
+                    <span className="text-sm text-gray-600">
+                      {t(language, "calculator.rates.manual.usdToUzs")}:
+                    </span>
                     <span className="ml-2 font-semibold">
                       {rates.usdToUzs.toLocaleString("ru-RU")}
                     </span>
                   </div>
                   <div>
-                    <span className="text-sm text-gray-600">USD → CNY:</span>
+                    <span className="text-sm text-gray-600">
+                      {t(language, "calculator.rates.manual.usdToCny")}:
+                    </span>
                     <span className="ml-2 font-semibold">
                       {rates.usdToCny.toFixed(2)}
                     </span>
                   </div>
                   <div className="col-span-2 text-xs text-gray-500">
-                    Обновлено:{" "}
+                    {t(language, "calculator.updated")}{" "}
                     {new Date(rates.lastUpdated).toLocaleString("ru-RU")}
                   </div>
                 </div>
@@ -219,13 +232,13 @@ export default function CalculatorPage() {
           {/* Объем груза */}
           <div className="mb-6">
             <label className="block text-sm font-semibold mb-2">
-              Объем груза (куб.м) *
+              {t(language, "calculator.volume.label")}
             </label>
             <input
               type="number"
               value={volume}
               onChange={(e) => setVolume(e.target.value)}
-              placeholder="Введите объем в кубометрах"
+              placeholder={t(language, "calculator.volume.placeholder")}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
               min="0.01"
               step="0.01"
@@ -238,7 +251,7 @@ export default function CalculatorPage() {
             className="w-full btn-primary mb-6"
             disabled={!rates}
           >
-            Рассчитать стоимость
+            {t(language, "calculator.calculate")}
           </button>
 
           {/* Ошибка */}
@@ -252,32 +265,30 @@ export default function CalculatorPage() {
           {result && rates && (
             <div className="mb-6 p-6 bg-green-50 border border-green-200 rounded-lg">
               <h3 className="text-xl font-semibold mb-4 text-green-800">
-                Результат расчёта
+                {t(language, "calculator.result.title")}
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-700">Стоимость в USD:</span>
+                  <span className="text-gray-700">{t(language, "calculator.result.usd")}</span>
                   <span className="font-bold text-lg text-primary">
                     {result.usd.toFixed(2)} USD
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-700">Стоимость в UZS:</span>
+                  <span className="text-gray-700">{t(language, "calculator.result.uzs")}</span>
                   <span className="font-bold text-lg text-primary">
                     {result.uzs.toLocaleString("ru-RU")} UZS
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-700">Стоимость в CNY:</span>
+                  <span className="text-gray-700">{t(language, "calculator.result.cny")}</span>
                   <span className="font-bold text-lg text-primary">
                     {result.cny.toFixed(2)} CNY
                   </span>
                 </div>
               </div>
               <p className="text-sm text-gray-600 mt-4">
-                * Указанная стоимость является ориентировочной. Финальная цена
-                может отличаться в зависимости от дополнительных услуг и
-                особенностей груза.
+                {t(language, "calculator.disclaimer")}
               </p>
             </div>
           )}
@@ -286,9 +297,9 @@ export default function CalculatorPage() {
         {/* Дополнительная информация */}
         <div className="mt-8 text-center text-gray-600">
           <p>
-            Нужна консультация?{" "}
+            {t(language, "calculator.consultation")}{" "}
             <Link href="/contacts" className="text-primary hover:underline">
-              Свяжитесь с нами
+              {t(language, "calculator.contactUs")}
             </Link>
           </p>
         </div>

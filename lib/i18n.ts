@@ -59,6 +59,36 @@ const RU: Dict = {
 
   // Контакты — адрес
   "contacts.info.address.value": "улица Аския 24, Ташкент",
+
+  // Калькулятор
+  "calculator.title": "Калькулятор стоимости доставки",
+  "calculator.tariff": "Тариф: {price} USD за 1 кубометр (Без растаможки)",
+  "calculator.rates.title": "Курсы валют",
+  "calculator.rates.refresh": "Обновить",
+  "calculator.rates.loading": "Загрузка...",
+  "calculator.rates.manual.toggle": "Ввести вручную",
+  "calculator.rates.manual.cancel": "Отмена",
+  "calculator.rates.manual.usdToUzs": "USD → UZS",
+  "calculator.rates.manual.usdToCny": "USD → CNY",
+  "calculator.rates.manual.placeholder.usdToUzs": "Например: 12500",
+  "calculator.rates.manual.placeholder.usdToCny": "Например: 7.2",
+  "calculator.rates.manual.save": "Сохранить курсы",
+  "calculator.volume.label": "Объем груза (куб.м) *",
+  "calculator.volume.placeholder": "Введите объем в кубометрах",
+  "calculator.calculate": "Рассчитать стоимость",
+  "calculator.result.title": "Результат расчёта",
+  "calculator.result.usd": "Стоимость в USD:",
+  "calculator.result.uzs": "Стоимость в UZS:",
+  "calculator.result.cny": "Стоимость в CNY:",
+  "calculator.disclaimer":
+    "* Указанная стоимость является ориентировочной. Финальная цена может отличаться в зависимости от дополнительных услуг и особенностей груза.",
+  "calculator.consultation": "Нужна консультация?",
+  "calculator.contactUs": "Свяжитесь с нами",
+  "calculator.errors.enterVolume": "Введите объем груза",
+  "calculator.errors.ratesNotLoaded": "Курсы валют не загружены",
+  "calculator.errors.invalidVolume": "Введите корректный объем",
+  "calculator.errors.invalidRates": "Введите корректные значения курсов",
+  "calculator.updated": "Обновлено:",
 };
 
 // UZ
@@ -113,6 +143,36 @@ const UZ: Dict = {
     "Bojxona rasmiylashtirishning to'liq hamrohligi. Hujjatlarni tayyorlashda yordam.",
 
   "contacts.info.address.value": "Askia ko'chasi 24, Toshkent",
+
+  // Kalkulyator
+  "calculator.title": "Yetkazib berish narxini hisoblash",
+  "calculator.tariff": "Tarif: 1 kubometr uchun {price} USD (Bojxonasiz)",
+  "calculator.rates.title": "Valyuta kurslari",
+  "calculator.rates.refresh": "Yangilash",
+  "calculator.rates.loading": "Yuklanmoqda...",
+  "calculator.rates.manual.toggle": "Qo'lda kiritish",
+  "calculator.rates.manual.cancel": "Bekor qilish",
+  "calculator.rates.manual.usdToUzs": "USD → UZS",
+  "calculator.rates.manual.usdToCny": "USD → CNY",
+  "calculator.rates.manual.placeholder.usdToUzs": "Masalan: 12500",
+  "calculator.rates.manual.placeholder.usdToCny": "Masalan: 7.2",
+  "calculator.rates.manual.save": "Kurslarni saqlash",
+  "calculator.volume.label": "Yuk hajmi (kub.m) *",
+  "calculator.volume.placeholder": "Hajmni kubometrlarda kiriting",
+  "calculator.calculate": "Narxni hisoblash",
+  "calculator.result.title": "Hisoblash natijasi",
+  "calculator.result.usd": "USD dagi qiymat:",
+  "calculator.result.uzs": "UZS dagi qiymat:",
+  "calculator.result.cny": "CNY dagi qiymat:",
+  "calculator.disclaimer":
+    "* Ko'rsatilgan narx taxminiy. Yakuniy narx qo'shimcha xizmatlar va yuk xususiyatlariga qarab farq qilishi mumkin.",
+  "calculator.consultation": "Maslahat kerakmi?",
+  "calculator.contactUs": "Biz bilan bog'laning",
+  "calculator.errors.enterVolume": "Yuk hajmini kiriting",
+  "calculator.errors.ratesNotLoaded": "Valyuta kurslari yuklanmadi",
+  "calculator.errors.invalidVolume": "To'g'ri hajm kiriting",
+  "calculator.errors.invalidRates": "Kurs qiymatlarini to'g'ri kiriting",
+  "calculator.updated": "Yangilangan:",
 };
 
 // EN
@@ -167,6 +227,36 @@ const EN: Dict = {
     "Full customs clearance support. Assistance in document preparation.",
 
   "contacts.info.address.value": "Askia Street 24, Tashkent",
+
+  // Calculator
+  "calculator.title": "Delivery cost calculator",
+  "calculator.tariff": "Rate: {price} USD per 1 m³ (No customs clearance)",
+  "calculator.rates.title": "Exchange rates",
+  "calculator.rates.refresh": "Refresh",
+  "calculator.rates.loading": "Loading...",
+  "calculator.rates.manual.toggle": "Enter manually",
+  "calculator.rates.manual.cancel": "Cancel",
+  "calculator.rates.manual.usdToUzs": "USD → UZS",
+  "calculator.rates.manual.usdToCny": "USD → CNY",
+  "calculator.rates.manual.placeholder.usdToUzs": "E.g.: 12500",
+  "calculator.rates.manual.placeholder.usdToCny": "E.g.: 7.2",
+  "calculator.rates.manual.save": "Save rates",
+  "calculator.volume.label": "Cargo volume (m³) *",
+  "calculator.volume.placeholder": "Enter volume in cubic meters",
+  "calculator.calculate": "Calculate cost",
+  "calculator.result.title": "Calculation result",
+  "calculator.result.usd": "Cost in USD:",
+  "calculator.result.uzs": "Cost in UZS:",
+  "calculator.result.cny": "Cost in CNY:",
+  "calculator.disclaimer":
+    "* The shown cost is approximate. The final price may vary depending on additional services and cargo specifics.",
+  "calculator.consultation": "Need a consultation?",
+  "calculator.contactUs": "Contact us",
+  "calculator.errors.enterVolume": "Enter cargo volume",
+  "calculator.errors.ratesNotLoaded": "Exchange rates are not loaded",
+  "calculator.errors.invalidVolume": "Enter a valid volume",
+  "calculator.errors.invalidRates": "Enter valid exchange rate values",
+  "calculator.updated": "Updated:",
 };
 
 const DICTS: Record<Language, Dict> = { ru: RU, uz: UZ, en: EN };
